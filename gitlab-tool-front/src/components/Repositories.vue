@@ -18,8 +18,7 @@
 </template>
 
 <script>
-import {interval} from "rxjs";
-import {startWith, switchMap} from 'rxjs/operators';
+import axios from 'axios';
 
 export default {
   name: "Repositories",
@@ -27,17 +26,10 @@ export default {
     return {groups: []}
   },
   methods: {
-    getGroups() {
-      const request = interval(1000).pipe(
-          startWith(0),
-          switchMap(() =>
-              fetch('http://localhost:8081/groups')
-                  .then((response) => response.json())
-          ));
-
-      request.subscribe((data) => {
-        console.log(data);
-      })
+    async getGroups() {
+      const ctx = this;
+      const resp = await axios.get('http://localhost:8081/groups');
+      ctx.groups.push(resp.data);
     }
   },
   mounted() {

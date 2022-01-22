@@ -1,7 +1,8 @@
 
 app:
   gitlab:
-    url: https://webpostloan.uat.krungthai:60000/api/v4
-    personal-access-token:
+#    url: https://webpostloan.uat.krungthai:60000/api/v4
+    url: https://gitlab.com/api/v4
+    personal-access-token: glpat-hVzSjFD-kkQgzyrqy5SF
 server:
   port: 8081
