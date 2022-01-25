@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import 'bootstrap'
 export default {
   name: 'App',
   components: {
@@ -16,5 +15,4 @@ export default {
 </script>
 
 <style>
-@import '~bootstrap/dist/css/bootstrap.css';
 </style>

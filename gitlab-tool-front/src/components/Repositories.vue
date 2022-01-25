@@ -29,6 +29,7 @@ export default {
     async getGroups() {
       const ctx = this;
       const resp = await axios.get('http://localhost:8081/groups');
+      console.log(resp.data);
       ctx.groups.push(resp.data);
     }
   },
