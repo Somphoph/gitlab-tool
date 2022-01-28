@@ -1,29 +1,14 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <router-link to="/repository"><button class="btn btn-primary">Start Feature</button></router-link>
-      </div>
-    </div>
-    <br/>
-    <div class="row">
-      <div class="col-md-12">
-        <button class="btn btn-primary">Finish Feature</button>
-      </div>
-    </div>
-    <hr/>
-    <div class="row">
-      <div class="col-md-12">
-        <button class="btn btn-primary">Start Release</button>
-      </div>
-    </div>
-    <br/>
-    <div class="row">
-      <div class="col-md-12">
-        <button class="btn btn-primary">Finish Release</button>
-      </div>
-    </div>
+
+  <div class="grid grid-cols-1 gap-4">
+    <router-link to="/repository">
+      <button class="btn btn-blue w-full">Start Feature</button>
+    </router-link>
+    <button class="btn btn-blue">Finish Feature</button>
+    <button class="btn btn-blue">Start Release</button>
+    <button class="btn btn-blue">Finish Release</button>
   </div>
+
 </template>
 
 <script>
@@ -35,5 +20,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
