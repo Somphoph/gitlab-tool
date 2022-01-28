@@ -1,5 +1,5 @@
 <template>
-  <table class="table-auto">
+  <table class="border-collapse table-auto w-full text-sm">
     <thead>
     <tr>
       <th></th>
