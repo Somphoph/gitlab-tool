@@ -1,4 +1,4 @@
-package com.example.gitlabtool.Service;
+package com.example.gitlabtool.service;
 
 import com.example.gitlabtool.domain.Group;
 import reactor.core.publisher.Flux;

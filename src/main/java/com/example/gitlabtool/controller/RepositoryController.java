@@ -1,30 +1,39 @@
 package com.example.gitlabtool.controller;
 
-import com.example.gitlabtool.Service.GroupService;
+import com.example.gitlabtool.service.GroupService;
+import com.example.gitlabtool.domain.Project;
 import com.example.gitlabtool.domain.Group;
-import org.springframework.http.MediaType;
+import com.example.gitlabtool.service.ProjectService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Flux;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8080")
 public class RepositoryController {
     private final GroupService groupService;
+    private final ProjectService projectService;
 
-    public RepositoryController(GroupService groupService) {
+    public RepositoryController(GroupService groupService, ProjectService projectService) {
         this.groupService = groupService;
+        this.projectService = projectService;
     }
 
     @GetMapping(path = "/groups")
-    @CrossOrigin(origins = "http://localhost:8080")
     public List<Group> getGroups() {
         List<Group> groups = new ArrayList<>();
         groupService.findAllWhenRoleDev().subscribe(groups::add);
         return groups;
+    }
+    @GetMapping(path="/groups/{groupid}/projects")
+    public List<Project> getProjects(@PathVariable String groupid) {
+        List<Project> repositories = new ArrayList<>();
+        projectService.findByGroup(groupid).subscribe(repositories::add);
+        return repositories;
     }
 }
