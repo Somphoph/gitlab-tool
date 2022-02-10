@@ -30,10 +30,10 @@ public class RepositoryController {
         groupService.findAllWhenRoleDev().subscribe(groups::add);
         return groups;
     }
-    @GetMapping(path="/groups/{groupid}/projects")
-    public List<Project> getProjects(@PathVariable String groupid) {
+    @GetMapping(path="/projects")
+    public List<Project> getProjects() {
         List<Project> repositories = new ArrayList<>();
-        projectService.findByGroup(groupid).subscribe(repositories::add);
+        projectService.findAll().subscribe(repositories::add);
         return repositories;
     }
 }

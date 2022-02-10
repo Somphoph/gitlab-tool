@@ -11,14 +11,14 @@
       <tr>
         <th>#</th>
         <th>Project</th>
-        <th>Repository</th>
+        <th>URL</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr v-for="project in projects" :key="project.id">
+        <td>{{ project.id }}</td>
+        <td>{{ project.name }}</td>
+        <td>{{ project.url }}</td>
       </tr>
       </tbody>
     </table>
@@ -31,17 +31,25 @@ import axios from 'axios';
 export default {
   name: "Repositories",
   data() {
-    return {groups: []}
+    return {
+      groups: [],
+      projects: []
+    }
   },
   methods: {
     async getGroups() {
       const ctx = this;
       const resp = await axios.get('http://localhost:8081/groups');
       ctx.groups.push(...resp.data);
+    },
+    async getProjects() {
+      const ctx = this;
+      const resp = await axios.get('http://localhost:8081/projects');
+      ctx.projects.push(...resp.data);
     }
   },
   mounted() {
-    this.getGroups();
+    this.getProjects();
   }
 }
 </script>

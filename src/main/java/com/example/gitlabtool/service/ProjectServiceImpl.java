@@ -12,9 +12,9 @@ public class ProjectServiceImpl implements ProjectService {
     @Value("${app.gitlab.personal-access-token}")
     private String personalAccessToken;
     @Override
-    public Flux<Project> findByGroup(String groupid) {
+    public Flux<Project> findAll() {
         WebClient client = WebClient.builder().baseUrl(gitlabUrl).build();
-        return client.get().uri("/projects").headers(h -> h.setBearerAuth(personalAccessToken))
+        return client.get().uri("/projects").attribute("min_access_level","30").headers(h -> h.setBearerAuth(personalAccessToken))
                 .retrieve().bodyToFlux(Project.class);
     }
 }
